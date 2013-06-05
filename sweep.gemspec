@@ -12,4 +12,9 @@ Gem::Specification.new do |gem|
 	gem.authors = ['Andrew Benson']
 	gem.email = 'sweep@rockstarunix.org'
 	gem.files = Dir['[A-Z]*'] + Dir['lib/**/*'] + ['sweep.gemspec']
+	gem.executables = Sweep::APP_NAME
+	gem.require_paths = ["lib"]
+	gem.has_rdoc = 'yard'
+	gem.extra_rdoc_files = ["README.md", "LICENSE", "NEWS.md"]
+
 end
