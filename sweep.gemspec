@@ -1,5 +1,4 @@
-base = __FILE__
-$:.unshift(File.join(File.dirname(base), 'lib'))
+$:.unshift(File.join(File.dirname(__FILE__), 'lib'))
 
 require 'rubygems'
 require 'sweep'
