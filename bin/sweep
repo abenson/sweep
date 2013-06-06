@@ -2,6 +2,40 @@
 
 require 'sweep'
 
-puts "Sweep #{Sweep::VERSION}, #{Sweep::COPYRIGHT}"
+require 'getopt/std'
 
+def help
+	puts "Show help:"
+	puts "   #{$0} -h"
+	puts "   #{$0} -?"
+	puts ""
+	puts "Create sample config:"
+	puts "   #{$0} -C config.yml"
+	puts ""
+	puts "Run scan:"
+	puts "   #{$0} -c config.yml -t hosts.lst"
+end
+
+puts "Sweep #{Sweep::VERSION}, #{Sweep::COPYRIGHT}"
+puts ""
+
+opt = Getopt::Std.getopts('c:t:C:h?')
+
+if opt['C'] then
+	File.open(opt['C'], 'w') do |cf|
+		cf.write(YAML::dump(Sweep::Config))
+	end
+	exit
+end
+
+if opt['h'] or opt['?'] then
+	help()
+	exit
+end
+
+if !opt['c'] or !opt['t'] then
+	puts "Error: Must specify target list and configuration."
+	help()
+	exit
+end
 
