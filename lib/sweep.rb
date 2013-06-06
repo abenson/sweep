@@ -15,3 +15,11 @@ module Sweep
 	}
 end
 
+require 'rubygems'
+require 'active_record'
+require 'racket'
+
+require 'sweep/scheduler'
+require 'sweep/task'
+require 'sweep/module'
+
