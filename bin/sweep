@@ -2,4 +2,6 @@
 
 require 'sweep'
 
-puts "Sweep #{Sweep::VERSION}"
+puts "Sweep #{Sweep::VERSION}, #{Sweep::COPYRIGHT}"
+
+
