@@ -10,18 +10,19 @@ module Sweep
 			@tasks.size
 		end
 
-		def scheduleAlive(ip)
+		def scheduleAlive(host)
 			
 		end
 
-		def scheduleTcp(ip)
+		def scheduleTcp(host)
 
 		end
 
-		def scheduleUdp(ip)
+		def scheduleUdp(host)
 		end
 
-		def scheduleModule(ip, proto, port)
+		def scheduleCheck(host, proto, port)
+			add( { :host => host, :proto => proto, :port => port } )
 		end
 
 		def seed(ips)
