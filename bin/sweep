@@ -51,7 +51,7 @@ File.open(opt['c'], 'r') do |cf|
 	end
 end
 
-sched = Sweep::Scheduler.new(config)
+sched = Sweep::Scheduler.new(conf)
 
 puts "Reading targets..."
 File.open(opt['t'], 'r') do |tf|
