@@ -23,8 +23,9 @@ opt = Getopt::Std.getopts('c:t:C:h?')
 
 if opt['C'] then
 	File.open(opt['C'], 'w') do |cf|
-		cf.write(YAML::dump(Sweep::Config))
+		cf.write(YAML::dump(Sweep::Config.new))
 	end
+	puts "Wrote example config to #{opt['C']}"
 	exit
 end
 
@@ -39,3 +40,25 @@ if !opt['c'] or !opt['t'] then
 	exit
 end
 
+conf = Sweep::Config.new
+
+File.open(opt['c'], 'r') do |cf|
+	begin
+		conf = conf.setConfig(YAML.load(cf.read))
+	rescue Exception => e
+		puts "Verify your configuration file: #{e.message}"
+		exit
+	end
+end
+
+sched = Sweep::Scheduler.new(config)
+
+puts "Reading targets..."
+File.open(opt['t'], 'r') do |tf|
+	begin
+		sched.seed(tf.readlines.shuffle!)
+	rescue Exception => e
+		puts "Could not seed queue: #{e.message}"
+		exit
+	end
+end
