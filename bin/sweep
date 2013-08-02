@@ -62,3 +62,5 @@ File.open(opt['t'], 'r') do |tf|
 		exit
 	end
 end
+
+puts "Scanning for #{sched.taskCount} hosts."

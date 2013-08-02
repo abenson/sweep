@@ -7,6 +7,10 @@ module Sweep
 			@udpPorts = [53, 69, 161]
 		end
 
+		def taskCount
+			@tasks.size
+		end
+
 		def scheduleAlive(ip)
 			
 		end
