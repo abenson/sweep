@@ -3,8 +3,7 @@ module Sweep
 		def initialize(config)
 			@tasks = []
 			@semaphore = Mutex.new
-			@tcpPorts = [21, 22, 23, 80, 443, 445, 139]
-			@udpPorts = [53, 69, 161]
+			@config = config
 		end
 
 		def taskCount
